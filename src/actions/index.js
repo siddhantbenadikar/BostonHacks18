@@ -1,10 +1,9 @@
 import axios from 'axios';
+import {SECRETS} from '../secrets'
 
-const API_KEY_GOOGLE = 'AIzaSyAbXAo-b_xJxOc2bqFMFxV3kc3VKuHL8ac';
-const ROOT_URL_GOOGLE = `https://maps.googleapis.com/maps/api/geocode/json?key=${API_KEY_GOOGLE}`;
 
-const API_KEY_SOLARIS = 'dyc5h53SUTcRd1rV5rntUGqNAgvfPcUU';
-const ROOT_URL_SOLARIS = `https://apis.solarialabs.com/shine/v1/parking-rules/meters?apikey=${API_KEY_SOLARIS}`;
+const ROOT_URL_GOOGLE = `https://maps.googleapis.com/maps/api/geocode/json?key=${SECRETS.GOOGLE_API_KEY}`;
+const ROOT_URL_SOLARIS = `https://apis.solarialabs.com/shine/v1/parking-rules/meters?apikey=${SECRETS.SOLARIS_API_KEY}`;
 
 export const FETCH_COORD = 'FETCH_COORD';
 export const FETCH_METER = 'FETCH_METER';
