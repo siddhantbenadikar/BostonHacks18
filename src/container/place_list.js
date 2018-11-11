@@ -8,8 +8,14 @@ class PlaceList extends Component {
 
     render() {
         if (this.props.placeData.length < 1) {
-            return <div>Enter a value...</div>
+            return null;
         }
+
+        if (this.props.placeData[0].length < 1) {
+            return <div>Sorry... could not find any parking spots on the given location.</div>;
+        }
+
+        debugger;
         const data = this.props.placeData[0][0];
         const lat = data.Latitude;
         const lng = data.Longitude;
@@ -23,7 +29,6 @@ class PlaceList extends Component {
 }
 
 function mapStateToProps(state) {
-    // return { placeData: [[{"Meter_ID": "1", "Latitude": -34.397, "Longitude": 150.644}]] };
     return { placeData: state.placeData };
 }
 
