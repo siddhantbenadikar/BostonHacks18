@@ -2,33 +2,28 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import {fetchMeters} from "../actions";
+import GoogleMap from "../components/google_map"
 
 class PlaceList extends Component {
-    renderPlaces(placeData) {
-        if (placeData.length < 1) {
-            return <div>ENTER a place..</div>
-        }
-        console.log(placeData);
-    }
-    render() {
-        return (
-            <table className="table table-hover">
-                <thead>
-                <tr>
-                    <th>Meter Id</th>
-                    <th>Map</th>
-                </tr>
-                </thead>
-                <tbody>
-                {this.props.placeData.map(this.renderPlaces)}
-                </tbody>
-            </table>
-        );
 
+    render() {
+        if (this.props.placeData.length < 1) {
+            return <div>Enter a value...</div>
+        }
+        const data = this.props.placeData[0][0];
+        const lat = data.Latitude;
+        const lng = data.Longitude;
+
+        return (
+            <div className="lolcat">
+                <GoogleMap lat={lat} lng={lng} listOfPlaces={this.props.placeData[0]}/>
+            </div>
+        );
     }
 }
 
 function mapStateToProps(state) {
+    // return { placeData: [[{"Meter_ID": "1", "Latitude": -34.397, "Longitude": 150.644}]] };
     return { placeData: state.placeData };
 }
 

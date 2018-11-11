@@ -28,7 +28,7 @@ export function fetchCoord(address) {
 }
 
 export function fetchMeters(lat, lng) {
-    const url = `${ROOT_URL_SOLARIS}&lat=${lat}&long=${lng}&max-distance=1000&max-results=10`;
+    const url = `${ROOT_URL_SOLARIS}&lat=${lat}&long=${lng}&max-distance=5000&max-results=100`;
     const request = axios.get(url);
     return {
         type: FETCH_METER,
